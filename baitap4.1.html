@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let products = [
+            { id: 1, name: "milk", count: 900, size: "M" },
+            { id: 2, name: "yakult", count: 500, size: "L" },
+            { id: 3, name: "butter", count: 800, size: "L" }
+        ];
+            let newproducts = {
+                id: 4,
+                name: "soda",
+                count: 200,
+                size: "M"
+            }
+            products.push(newproducts)
+            console.log(products[1].count);
+            for (let i = 0; i < products.length-1; i++) {
+                for (let j = i+1; j < products.length; j++) {
+                    if (products[i].count < products[j].count) {
+                            let x = products[i];
+                            products[i] = products[j]
+                            products[j] = x
+                            
+                    }
+                }
+            }
+
+            let size = prompt("Mời bạn nhập size") ; 
+            let locsize = products.filter (function (products) {
+                return products.size == size;
+            })
+            console.log(locsize);
+            // let text = prompt("Mời bạn nhập kí tự tìm kiếm");
+            // console.log(text);
+            // let arr1 = text.split("");
+            // for (let i = 0; i < Products.length; i++) {
+            //     let arr = Products[i].name.split("")
+            //     for (let j = 0; j < arr.length; j++) {
+            //         if (arr1.length == 1) {
+            //             if (arr == text) {
+            //                 console.log(Products[i]);
+            //                 break;
+            //             }
+
+            //         } else if (arr1.length == 2) {
+            //             for (let k = 0; k < arr1.length; k++) {
+            //                 if (arr[j] == text[k] && arr[j + 1] == text[k + 1]) {
+            //                     console.log(Products[i]);
+                               
+            //                 }
+
+            //             }
+            //             break;
+            //         }
+            //     }
+
+            // }
+        // for (let i = 0; i < Products.length; i++) {
+        //     if (Products[i].id==2) {
+        //         Products.splice(i,1)
+        //     }
+        //     if (Products[i].id == 3) {
+        //         Products[i].count = 0;
+        //     }
+        //     if (Products[i].name == "Butter") {
+        //         console.log(Products[i]);
+        //     }
+        //     // } else {
+        //     //     document.write("Không có từ tìm kiếm");
+        //     // }
+        // }
+      
+       
+        // console.log(Products);
+    </script>
+</body>
+</html>

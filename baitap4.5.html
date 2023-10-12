@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let stores = [{ id: 1, name: "Milk", count: 100, },
+        { id: 2, name: "Yakult", count: 100 },
+        { id: 3, name: "Butter", count: 100, }
+        ];
+        let carts = []
+        function check() {
+            while (true) {
+                let text = prompt("Mời nhập C/R/U/D/E");
+                switch (text) {
+                    case "C":
+                        //Nhập sản phẩm muốn mua
+                        let product = prompt("Nhập sản phẩm muốn mua");
+                        let result = stores.find((item) => {
+                            return item.name == product
+                        })
+                        console.log(result);
+                        // result là sản phẩm muốn mua
+                        if (result) {
+                            for (let i = 0; i < stores.length; i++) {
+                                if (stores[i].name == result.name) {
+                                    stores[i].count == --stores[i].count;
+                                }
+                            }
+                            let check = carts.filter((item) => {
+                                return item.name == product;
+                            })
+                            // tức là đối tượng đã có trong giỏ hàng
+                            if (check.length != 0) {
+                                for (let i = 0; i < carts.length; i++) {
+                                    if (carts[i].name == product) {
+                                        carts[i].count == ++carts[i].count;
+                                    }
+                                }
+                                console.log("carts", carts);
+                            } else {
+                                carts.push({ ...result, count: 1 });
+                            }
+                            console.log("Sản phẩm trong stores là: ", stores);
+                            console.log("Sản phẩm trong carts là: " ,carts);
+                        } else {
+                            console.log("sản phẩm không có trong giỏ hàng");
+                        }
+                        
+                        break;
+                    case "R":
+                        console.log("Sản phẩm trong stores là:" ,stores);
+                        console.log("Sản phẩm trong carts là:" ,carts);
+                        break;
+                    case "U":
+                        let updateCarts = prompt("Mời nhập vị trí muốn update");
+                        if (updateCarts >= 0 && updateCarts < carts.length) {
+                            let howMany = +prompt("Nhập số lượng muốn thay đổi");
+                            //thay đổi count trong stores
+                            for (let i = 0; i < stores.length; i++) {
+                                if (stores[i].name == carts[updateCarts].name) {
+                                    stores[i].count = stores[i].count-howMany;
+                                }
+                            }
+                            //thay đổi count trong carts
+                            carts[updateCarts].count = carts[updateCarts].count+howMany ;
+                        } else {
+                            updateCarts = prompt("Mời nhập lại vị trí muốn update");
+                        }
+                        console.log("Sản phẩm trong stores là: " ,stores);
+                        console.log("Sản phẩm trong carts là: " ,carts);
+                        break;
+                    case "D":
+                        let deleteCarts = prompt("Mời nhập vị trí muốn xóa");
+                        if (deleteCarts >= 0 && deleteCarts <carts.length) {
+                            carts.splice(deleteCarts,1)
+                        } else {
+                        deleteCarts = prompt("Mời nhập lại vị trí muốn xóa");
+                        }
+                        console.log("Sản phầm trong giỏ hàng là: " ,carts);
+                        break;
+                    case "E":
+                        console.log("Cảm ơn bạn đã đến với Rikkei Academy");
+                        return;
+                        break;
+                    default:
+                        text = prompt("Mời nhập lại C/R/U/D/E");  
+                        break;
+                }
+            }
+        }
+        check()
+    </script>
+</body>
+</html>

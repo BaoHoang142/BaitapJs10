@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //     class Todolist {
+    //         constructor(id, name, complete) {
+    //             this.id = id,
+    //             this.name = name,
+    //             this.complete = complete
+    //         }
+    //     }
+    //     let list1 = new Todolist(1, "HTML", "false");
+    //     let list2 = new Todolist(2, "CSS", "false");
+    //     let list3 = new Todolist(3, "Basic of javascript", "false");
+    //     let list4 = new Todolist(4, "Node package Manager (npm)", "false");
+    //     let list5 = new Todolist(5, "Git", "false");
+    //     let list = [];
+    //     list.push(list1,list2,list3,list4,list5);
+    //     console.log(list);
+    // //Cho người dùng nhập vào 5 chữ cái C/R/U/D/E:
+    // //C: cho người dùng nhập vào khóa học mới và trạng thái hoàn thành. Sau đó cập nhật lại bảng dữ liệu
+     
+        
+    //     for (let i = list.length+1; i > list.length; i++){
+    //         let newCourse = prompt("Nhập vào khóa mới");
+    //         let comPlete = prompt ("Nhập vào trạng thái hiện tại");
+    //         let newList = new Todolist(i,newCourse,comPlete);
+    //         list.push(newList);
+    //         break;
+    //     }
+    //     console.log(list);
+    const todoList = [
+        {id: 1, todo: "HTML", complete: false },
+        {id: 2, todo: "CSS", complete: false },
+        {id: 3, todo: "Basic of javascript", complete: false },
+        {id: 4, todo: "Node package Manager (npm)", complete: false },
+        {id: 5, todo: "Git", complete: false },
+    ];
+//Nhập C
+    function addTodo(todo) {
+        let newId = todoList.length+1;
+        let complete = prompt("Nhập trạng thái");
+        let newTodo = {
+            id :newId,
+            todo: todo,
+            complete: complete,
+        };
+        todoList.push(newTodo)
+        console.log(todoList);
+    }
+//Nhập R
+    function printTodolist() {
+        for (let i = 0; i < todoList.length; i++) {
+            console.log(`${i+1}. ${todoList[i].todo}  - ${todoList[i].complete}`)
+        }
+    }
+//Nhập U
+    function updateTodolist() {
+        let update = prompt("Nhập vào vị trí muốn update")
+        if (update >= 0 && update <= todoList.length) {
+            todoList[update].todo = prompt("Khóa học mới");
+            todoList[update].complete = prompt("Trạng thái khóa học")
+        } else {
+            update = prompt("Nhập lại vị trí")
+        }
+        console.log(todoList);
+    }
+//Nhập D
+    function deleteTodolist() {
+        let deleteList = prompt("Nhập vào vị trí muốn xóa")
+        if (deleteList >= 0 && deleteList <= todoList.length) {
+            todoList.splice(deleteList,1)
+        } else {
+            update = prompt("Nhập lại vị trí")
+        }
+        console.log(todoList);
+    }
+//Nhập E
+    while (true) {
+        let text = prompt("Nhập vào 1 trong 5 chữ cái C/R/U/D/E")
+        if (text==="C") {
+            addTodo(prompt("Nhập vào khóa học mới")); 
+        } else if (text==="R") {
+            printTodolist()
+        } else if (text==="U") {
+            updateTodolist()
+        } else if (text==="D") {
+            deleteTodolist()
+        } else if (text==="E") {
+            alert("Cảm ơn bạn đã đến với Rikkei Academy")
+            break;
+        } else {
+            text=prompt("Mời nhập lại")
+        }
+    }
+    </script>
+</body>
+</html>

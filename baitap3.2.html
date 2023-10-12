@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class Student {
+            constructor(id, name, gender, age, mark) {
+                this.id     =id,
+                this.name   = name,
+                this.gender =gender,
+                this.age    =age,
+                this.mark   =mark
+            }
+        }
+        let student1 = new Student (1, "Nguyen Van A", "nam", 20, 9);
+        let student2 = new Student (2, "Nguyen Van B", "nam", 20, 8);
+        let student3 = new Student (3, "Nguyen Van C", "nam", 20, 9);
+        let student4 = new Student (4, "Nguyen Van D", "nam", 20, 9);
+        let student5 = new Student (5, "Nguyen Van E", "nam", 20, 7);
+        let students = [];
+        students.push(student1,student2,student3,student4,student5);
+    // Tìm chuỗi lớn nhất
+        let maxAll = students[0].mark;
+        let index;
+        let maxArr = [];
+        for (let i = 0; i < students.length; i++) {
+            if (maxAll<=students[i].mark) {
+                maxAll=students[i].mark;
+                maxArr.push(students[i]);
+            }
+            
+        }
+        console.log(maxArr);
+        // let result = students.filter((item)=> {
+        //     return item==maxAll
+        // })
+        // console.log("result", result);
+        // for (let i = 0; i < students.length-1; i++) {
+        //         for (let j = i+1; j < students.length; j++) {
+        //             if (students[i].mark < students[j].mark) {
+        //                     let x = students[i];
+        //                     students[i] = students[j];
+        //                     students[j] = x;
+                            
+        //             }
+        //         }
+        //     }
+        // let max = students[0];
+        // for (let i = 0; i < students.length; i++) {
+        //     if (students[i].mark == max.mark) {
+        //         console.log(students[i]);
+        //     }
+            
+        // }
+    // Xếp loại điểm trung bình
+        let sum = 0;
+        let tb = 0;
+            for (let i = 0; i < students.length; i++) {
+                sum += students[i].mark;
+            }
+            tb = sum / students.length;
+            console.log(sum);
+            console.log(`${tb}`);
+            if (tb >= 7.5) {
+                console.log("Lớp khá");
+            } else if (tb >= 5 && tb < 7.5) {
+                console.log("Lớp trung bình");
+            } else if (tb < 5) {
+                console.log("Lớp yếu");
+            }
+        </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class User   {
+            constructor(name, email, address, phonenumber){
+                this.name = name,
+                this.email = email,
+                this.address = address,
+                this.phonenumber = phonenumber,
+                this.role = 0   
+            }
+        get getRole() {
+            return this.role
+        }
+        set setRole(role) {
+            this.role = role
+        }
+            
+        }
+        class Admin extends User {
+            constructor(name, email, address, phonenumber) {
+                super(name, email, address, phonenumber),
+                this.role = 1;
+            }
+        }
+        let user1 = new User("Hoang","abc@gmail.com", "14 ABC", 1234);
+        let user2 = new User("Bao","abcd@gmail.com", "15 ABC", 12334);
+        let user3 = new User("Minh","abce@gmail.com", "16 ABC", 123334);
+        let admin = new Admin("Sep", "sep@gmail.com", "14 ADC", 1222);
+        let userMain = [user1,user2,user3,admin];
+        // console.log(user);
+    // xóa tên người dùng
+        let deleteName = prompt("Nhập tên muốn xóa");
+        // console.log(arrUser1);
+        for (let i = 0; i < userMain.length; i++) {
+           if (userMain[i].name == "Sep") {
+                continue
+           } else if (userMain[i].name == deleteName) {
+                delete userMain[i]. 
+           }
+        }
+    // sửa thông tin thông qua id
+        let changeId = prompt("Nhập id cần sửa")
+
+        console.log(userMain);
+    </script>
+</body>
+</html>
